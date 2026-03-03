@@ -1,0 +1,11 @@
+class Solution: 
+    def selectionSort(self, arr):
+        #code here
+        for i in range(len(arr)):
+            min = arr[i]
+            idx = i
+            for j in range(i,len(arr)):
+                if arr[j] < min:
+                    idx = j
+                    min = arr[idx]
+            arr[i],arr[idx] = arr[idx], arr[i]
