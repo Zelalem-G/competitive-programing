@@ -1,13 +1,17 @@
 class Solution(object):
     def numRescueBoats(self, people, limit):
         people.sort()
-        l, r = 0, len(people) - 1
-        boats = 0
+        ans = 0
 
-        while l <= r:
-            if people[l] + people[r] <= limit:
+        l=0
+        r=len(people)-1
+
+        while l<=r:
+            if people[l]+people[r]<=limit:
                 l += 1
-            r -= 1
-            boats += 1
-
-        return boats
+                r -= 1
+            else:
+                r -= 1
+            ans += 1
+        return ans
+                
