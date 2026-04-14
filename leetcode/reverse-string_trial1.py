@@ -1,8 +1,10 @@
 class Solution(object):
     def reverseString(self, s):
-        l,r = 0,len(s)-1
-        while l<r:
-            s[l],s[r] = s[r], s[l]
-            l += 1
-            r -= 1
+        def helper(l, r):
+            if l >= r:
+                return
+            s[l], s[r] = s[r], s[l]
+            helper(l + 1, r - 1)
+        
+        helper(0, len(s) - 1) 
             
