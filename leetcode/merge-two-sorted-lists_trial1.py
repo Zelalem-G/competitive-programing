@@ -2,20 +2,23 @@ class Solution(object):
     def mergeTwoLists(self, l1, l2):
         dummy = ListNode(-1)
         cur = dummy
-
-        while l1 and l2:
-            if l1.val <= l2.val:
+        def rec(l1, l2, cur):
+            if not l1:
+                cur.next = l2
+                return l2
+            elif not l2:
                 cur.next = l1
-                l1 = l1.next
+                return l1
+
+            if l1.val < l2.val:
+                cur.next = l1
+                cur = cur.next
+                return rec(l1.next,l2,cur)
             else:
                 cur.next = l2
-                l2 = l2.next
-            
-            cur = cur.next
+                cur = cur.next
+                return rec(l1,l2.next,cur)
 
-        if l1:
-            cur.next = l1
-        else:
-            cur.next = l2
+        rec(l1,l2,cur)
 
         return dummy.next
