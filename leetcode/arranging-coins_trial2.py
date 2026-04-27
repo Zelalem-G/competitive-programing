@@ -1,12 +1,14 @@
 class Solution(object):
     def arrangeCoins(self, n):
-        add = 0
-        row = 1
-        ans = 0
+        l, r = 0, n
 
-        while add + row <= n:
-            add += row
-            ans += 1
-            row += 1
+        while l <= r:
+            m = (l+r) // 2
+            coins = m * (m + 1) // 2
 
-        return ans
+            if coins <= n:
+                l = m+1
+            else:
+                r = m-1
+
+        return r
