@@ -6,14 +6,14 @@
 #         self.right = right
 class Solution(object):
     def searchBST(self, root, val):
-        node = root
-
-        while node:
-            if val < node.val:
-                node = node.left
-            elif val > node.val:
-                node = node.right
+        def bst(node):
+            if not node:
+                return None
+            elif node.val > val:
+                return bst(node.left)
+            elif node.val < val:
+                return bst(node.right)
             else:
                 return node
-        return None
+        return bst(root)
         
